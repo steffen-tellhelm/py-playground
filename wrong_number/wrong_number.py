@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from typing import Final
 from collections import Counter
 
