@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 from typing import Final
-from collections import Counter
+import wrong_number_raw as raw
+import wrong_number_np as np
 
 ALL_NUMBERS: Final = [
     [10, 20, 30, 44, 50, 60, 70],
@@ -10,35 +11,16 @@ ALL_NUMBERS: Final = [
     [1, 2, 3, 4, 5, 6, 8],
 ]
 
-
-def find_wrong_number(numbers):
-    diffs = [numbers[i + 1] - numbers[i] for i in range(len(numbers) - 1)]
-    diff_counts = Counter(diffs)
-    default_diff = diff_counts.most_common(1)[0][0]
-
-    bad_indices = [x for x, diff in enumerate(diffs) if diff != default_diff]
-
-    bad_index = find_bad_index(bad_indices)
-    wrong_number = numbers[bad_index]
-
-    return (default_diff, wrong_number, bad_index + 1)
-
-
-def find_bad_index(bad_indices):
-    if len(bad_indices) > 1:
-        return max(bad_indices)
-
-    bad_index = bad_indices[0]
-
-    if bad_index == 0:
-        return bad_index
-    else:
-        return bad_index+1
+ALGORITHMS: Final = {
+    "raw implementation": raw.find_wrong_number,
+    "numpy implementation": np.find_wrong_number,
+}
 
 
 if __name__ == "__main__":
     for numbers in ALL_NUMBERS:
-        default_diff, wrong_number, wrong_pos = find_wrong_number(numbers)
-        print(f"numbers are: {numbers}")
-        print(f"default difference is: {default_diff}")
-        print(f"wrong number is {wrong_number} at position {wrong_pos}\n")
+        for desc, find_wrong_number_algo in ALGORITHMS.items():
+            default_diff, wrong_number, wrong_pos = find_wrong_number_algo(numbers)
+            print(f"{desc} >> numbers are: {numbers}")
+            print(f"{desc} >> default difference is: {default_diff}")
+            print(f"{desc} >> wrong number is {wrong_number} at position {wrong_pos}\n")
