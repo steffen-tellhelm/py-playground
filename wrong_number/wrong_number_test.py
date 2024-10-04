@@ -17,6 +17,20 @@ class WrongNumberTest(unittest.TestCase):
         self.assertEqual(wrong_nr, 0, "wrong number")
         self.assertEqual(wrong_pos, 1, "wrong position")
 
+    def test_wrong_second(self):
+        def_diff, wrong_nr, wrong_pos = find_wrong_number([1, 2.5, 3, 4, 5, 6, 7])
+
+        self.assertEqual(def_diff, 1, "default diff")
+        self.assertEqual(wrong_nr, 2.5, "wrong number")
+        self.assertEqual(wrong_pos, 2, "wrong position")
+
+    def test_wrong_before_end(self):
+        def_diff, wrong_nr, wrong_pos = find_wrong_number([1, 2, 3, 4, 5, 6.5, 7])
+
+        self.assertEqual(def_diff, 1, "default diff")
+        self.assertEqual(wrong_nr, 6.5, "wrong number")
+        self.assertEqual(wrong_pos, 6, "wrong position")
+
     def test_wrong_end(self):
         def_diff, wrong_nr, wrong_pos = find_wrong_number([1, 2, 3, 4, 5, 6, 8])
 
