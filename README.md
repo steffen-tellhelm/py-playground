@@ -4,7 +4,7 @@ Just some small try outs to learn the language Python and compare it with other 
 
 ## General Setup
 
-Some packages contains a `requirement.txt` with it dependencies. It mostly suited to install them into a specific environment:
+Some packages contains a `requirement.txt` with containing the dependencies. It's generally recommended to install them into a specific environment:
 
 ```sh
 python -m venv .venv
