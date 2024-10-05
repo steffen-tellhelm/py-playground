@@ -28,4 +28,4 @@ if __name__ == "__main__":
             default_diff, wrong_number, wrong_pos, right_number = find_wrong_number_algo(numbers)
             print(f"{desc} >> default difference is: {default_diff}")
             print(f"{desc} >> wrong number is {wrong_number} at position {wrong_pos}")
-            print(f"{desc} >> right number would be {right_number}\n")
+            print(f"{desc} >> right number should be {right_number}\n")
