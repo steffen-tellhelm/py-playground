@@ -12,5 +12,6 @@ def find_wrong_number(numbers):
 
     bad_index = next(x for x in range(len(numbers)) if m * x + n != numbers[x])
     wrong_number = numbers[bad_index]
+    right_number = m * bad_index + n
 
-    return (m, wrong_number, bad_index + 1)
+    return (m, wrong_number, bad_index + 1, right_number)

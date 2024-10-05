@@ -13,7 +13,9 @@ def find_wrong_number(numbers):
     bad_index = find_bad_index(bad_indices)
     wrong_number = numbers[bad_index]
 
-    return (default_diff, wrong_number, bad_index + 1)
+    right_number = find_right_number(numbers, bad_index, default_diff)
+
+    return (default_diff, wrong_number, bad_index + 1, right_number)
 
 
 def find_bad_index(bad_indices):
@@ -26,3 +28,10 @@ def find_bad_index(bad_indices):
         return bad_index
     else:
         return bad_index+1
+
+
+def find_right_number(numbers, bad_index, default_diff):
+    if bad_index == 0:
+        return numbers[1] - default_diff
+
+    return numbers[bad_index - 1] + default_diff
